@@ -25,6 +25,7 @@ use warnings;
 # INPUT(a) or INPUT(9), delegating token validation entirely to Module B.
 #
 # Case 2 (Strict Scope): By restricting the router's else to '(?<!\d)[3-9](?!\d)', 
+# or even '(?<!\d)[0-9](?!\d)', '(?<!\d)[0-9]+(?!\d)', 
 # you mathematically restrict the language's alphabet at the gate. 
 # Even if Module B's multiplexer else allows '[0-9]+', an input like 'INPUT(a)' 
 # will fail immediately at Module A. 
