@@ -2,6 +2,7 @@
 # ==============================================================================
 # DESIGN PATTERN: NO-PIPE MULTIPLEXER (ADVANCED BINARY GATE & ROUTING)
 # ORIGINAL CONCEPT & LOGIC : jpfr
+# PATTERN DESCRIPTION : AI Assistant (Google Gemini)
 # LICENSE: MIT License (c) 2026 jpfregex - Full terms in root LICENSE file
 # ==============================================================================
 use strict;
@@ -9,7 +10,27 @@ use warnings;
 
 # --- MODULE A: The Input Router with Binary State Fork ---
 # If a [0-2] digit is found, the (?<i>...) group is successfully initialized.
-# If a [3-9] digit is found (expected else), the engine forks, bypassing and leaving <i> empty.
+# If an unknown token is found, the engine forks, bypassing and leaving <i> empty.
+#
+# NOTE ON DETERMINISM: 
+# The fallback branch below uses '[3-9]', but it could mathematically be replaced 
+# by '.', '\d+', or even '[0-9a-zA-Z]+'. Because the [0-2] capture is strictly 
+# constrained by assertions, any other pattern here acts as a passive pass-through 
+# that guarantees <i> remains false without interfering with the multiplexer's integrity.
+
+# --- THEORETICAL INSIGHT: SCOPE & SET CONTAINMENT ---
+# The Router's else branch controls the global acceptance matrix (the Scope).
+#
+# Case 1 (Permissive Scope): If the router's else is '.', the system accepts 
+# INPUT(a) or INPUT(9), delegating token validation entirely to Module B.
+#
+# Case 2 (Strict Scope): By restricting the router's else to '(?<!\d)[3-9](?!\d)', 
+# you mathematically restrict the language's alphabet at the gate. 
+# Even if Module B's multiplexer else allows '[0-9]+', an input like 'INPUT(a)' 
+# will fail immediately at Module A. 
+#
+# This demonstrates how the No-Pipe architecture allows developers to maintain 
+# absolute, multi-layered constraint scopes without structural coupling.
 
 my(${input_nopipe})=
 	'(?:'.
