@@ -36,15 +36,22 @@ use re 'debug';
 
 my(${input_nopipe})=
 	'(?:'.
-		'(?<![0-2])'. # prevents empty <i> (deterministic)
+		'(?<![0-9a-z])'. # prevents empty <i> (deterministic)
 		'(?<i>'.
 			'(?<i0>(?<!\d)0(?!\d))?'.
 			'(?<i1>(?<!\d)1(?!\d))?'.
 			'(?<i2>(?<!\d)2(?!\d))?'.
+			'(?<i3>(?<!\d)3(?!\d))?'.
+			'(?<i4>(?<!\d)4(?!\d))?'.
+			'(?<i5>(?<!\d)5(?!\d))?'.
+			'(?<i6>(?<!\d)6(?!\d))?'.
+			'(?<i7>(?<!\d)7(?!\d))?'.
+			'(?<i8>(?<!\d)8(?!\d))?'.
+			'(?<i9>(?<!\d)9(?!\d))?'.
 		')'.
-		'(?<=[0-2])'. # deterministic garantee <i> pattern captured or return false
+		'(?<=[0-9a-z])'. # deterministic garantee <i> pattern captured or return false
 		'|'.
-		'[3-9]'. # else condition with <i> false
+		'[a-z]'. # else condition with <i> false
 	')';
 
 
@@ -57,22 +64,36 @@ my(${multiplexer_nopipe})=
 			'(?(<i0>)0+)'.
 			'(?(<i1>)1+)'.
 			'(?(<i2>)2+)'.
+			'(?(<i3>)3+)'.
+			'(?(<i4>)4+)'.
+			'(?(<i5>)5+)'.
+			'(?(<i6>)6+)'.
+			'(?(<i7>)7+)'.
+			'(?(<i8>)8+)'.
+			'(?(<i9>)9+)'.
 			'|'.
-			'[0-9]+'. # else (allowing whatever you define)
+			'[a-z]+'. # else (allowing whatever you define)
 		')'.
 	')';
 
 # --- MODULE B - O(logN): The Conditional Multiplexer with Global Else ---
-# If <i> is active, it executes the linear no-pipe sequential multiplexer.
+# If <i> is active, it executes the nested no-pipe sequential multiplexer.
 # If <i> is empty, it instantly jumps to the global row-fallback branch.
 my(${multiplexer_nopipe})=
 	'(?<m>'.
 		'(?(<i>)'. # classic (?(patter)yes|no) form
 			'(?(<i0>)0+|'.
 			'(?(<i1>)1+|'.
-			'(?(<i2>)2+)))'.
+			'(?(<i2>)2+|'.
+			'(?(<i3>)3+|'.
+			'(?(<i4>)4+|'.
+			'(?(<i5>)5+|'.
+			'(?(<i6>)6+|'.
+			'(?(<i7>)7+|'.
+			'(?(<i8>)8+|'.
+			'(?(<i9>)9+))))))))))'.
 			'|'.
-			'[0-9]+'. # else (allowing whatever you define)
+			'[a-z]+'. # else (allowing whatever you define)
 		')'.
 	')';
 
@@ -103,9 +124,9 @@ my(${regex})=
 # --- EXECUTION ---
 print "=== RUNNING SHORT ADVANCED GATE MULTIPLEXER TEST ===\n";
 
-${test_ko}=~s/${regex}/[GOTIT]\n/gs;
-print "regex_ko : ${test_ko}\n";
-print "--------------------\n";
+#${test_ko}=~s/${regex}/[GOTIT]\n/gs;
+#print "regex_ko : ${test_ko}\n";
+#print "--------------------\n";
 ${test_ok}=~s/(?s:${regex})/[GOTIT]\n/gs;
 print "regex_ok : ${test_ok}\n";
 print "--------------------\n";

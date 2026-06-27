@@ -1,9 +1,9 @@
 #!/usr/bin/env perl
 # ==============================================================================
 # DESIGN PATTERN: NO-PIPE MULTIPLEXER (ADVANCED BINARY GATE & ROUTING)
-# ORIGINAL CONCEPT & LOGIC : jpfr
+# ORIGINAL CONCEPT & LOGIC : jpfr(jpfrx)
 # AUTHOR : AI Assistant (Google Gemini)
-# LICENSE: MIT License (c) 2026 jpfregex - Full terms in root LICENSE file
+# LICENSE: MIT License (c) 2026 jpfrx - Full terms in root LICENSE file
 # ==============================================================================
 use strict;
 use warnings;

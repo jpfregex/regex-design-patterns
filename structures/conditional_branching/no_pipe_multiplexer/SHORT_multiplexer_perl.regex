@@ -1,8 +1,9 @@
 # ==============================================================================
 # PATTERN : NO-PIPE MULTIPLEXER (SEQUENTIAL CONDITIONAL ROUTING) - SHORT VERSION
-# AUTHOR  : jpfr
+# AUTHOR  : jpfr(jpfrx)
 # ENGINE  : Perl / PCRE2 (Requires Extended Mode /x)
 # TARGET  : Dynamic Selector
+# LICENSE: MIT License (c) 2026 jpfrx - Full terms in root LICENSE file
 # ==============================================================================
 
 # ------------------------------------------------------------------------------

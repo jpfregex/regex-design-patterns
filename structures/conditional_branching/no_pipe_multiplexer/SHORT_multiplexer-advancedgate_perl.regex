@@ -1,9 +1,10 @@
 # ==============================================================================
 # PATTERN : NO-PIPE MULTIPLEXER (SEQUENTIAL CONDITIONAL ROUTING) - SHORT VERSION
 # VARIATION : Advanced Gate
-# AUTHOR  : jpfr
+# AUTHOR  : jpfr(jpfrx)
 # ENGINE  : Perl / PCRE2 (Requires Extended Mode /x)
 # TARGET  : Dynamic Selector
+# LICENSE: MIT License (c) 2026 jpfrx - Full terms in root LICENSE file
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
@@ -15,7 +16,7 @@
 # Choice alternations (|) are designed to allow <i> pattern to be false
 
 # ------------------------------------------------------------------------------
-# MODULE A: The Router (Capture Group)
+# MODULE A: The Router (Capture Group) - O(N) complexity
 # ------------------------------------------------------------------------------
 # Addition of an else path
 
@@ -33,7 +34,7 @@
 )
 
 # ------------------------------------------------------------------------------
-# MODULE B: The Linear Multiplexer (Passive Evaluator)
+# MODULE B: The Linear Multiplexer (Passive Evaluator) - O(N) complexity
 # ------------------------------------------------------------------------------
 # Uses successive independent conditional structures without explicit "else" blocks.
 # The engine glides through unselected branches instantaneously without backtracking.
@@ -45,6 +46,23 @@
     (?(<i1>) 1+ )
     (?(<i2>) 2+ )
     |
+    [3-9]+
+  )
+)
+
+# ------------------------------------------------------------------------------
+# MODULE B: The Nested Multiplexer (Passive Evaluator) - O(log N) complexity
+# ------------------------------------------------------------------------------
+# Uses nested independent conditional structures without explicit "else" blocks.
+# The engine glides through unselected branches instantaneously without backtracking.
+
+(?x)
+(?<m>
+  (?(<i>) # classic (?(patter)yes|no) form
+    (?(<i0>) 0+ |
+    (?(<i1>) 1+ |
+    (?(<i2>) 2+ )))
+	'|'
     [3-9]+
   )
 )
