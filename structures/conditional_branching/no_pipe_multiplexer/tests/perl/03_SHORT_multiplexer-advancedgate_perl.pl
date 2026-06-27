@@ -13,6 +13,7 @@ use warnings;
 
 my(${input_nopipe})=
 	'(?:'.
+		'(?<![0-2])'. # prevents empty <i> (deterministic)
 		'(?<i>'.
 			'(?<i0>(?<!\d)0(?!\d))?'.
 			'(?<i1>(?<!\d)1(?!\d))?'.
