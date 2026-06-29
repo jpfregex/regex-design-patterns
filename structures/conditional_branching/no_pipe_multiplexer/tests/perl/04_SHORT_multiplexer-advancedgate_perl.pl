@@ -2,12 +2,11 @@
 # ==============================================================================
 # DESIGN PATTERN: NO-PIPE MULTIPLEXER (ADVANCED BINARY GATE & ROUTING)
 # ORIGINAL CONCEPT & LOGIC : jpfr(jpfrx)
-# PATTERN DESCRIPTION : AI Assistant (Google Gemini)
+# COMMENT & PRESENTATION : AI Assistant (Google Gemini)
 # LICENSE: MIT License (c) 2026 jpfrx - Full terms in root LICENSE file
 # ==============================================================================
 use strict;
 use warnings;
-use re 'debug';
 
 # --- MODULE A: The Input Router with Binary State Fork ---
 # If a [0-2] digit is found, the (?<i>...) group is successfully initialized.

@@ -1,7 +1,7 @@
 # ==============================================================================
 # PATTERN : NO-PIPE MULTIPLEXER (SEQUENTIAL CONDITIONAL ROUTING)
 # AUTHOR  : jpfr(jpfrx)
-# ARCHITECTURE & FORMATTING : AI Assistant (Google Gemini)
+# COMMENT & PRESENTATION : AI Assistant (Google Gemini)
 # ENGINE  : Perl / PCRE2 (Requires Extended Mode /x)
 # TARGET  : Dynamic Radix Selector & Token Validator (LISP-style parsing workflow)
 # LICENSE : MIT License (c) 2026 jpfrx - Full terms in root LICENSE file

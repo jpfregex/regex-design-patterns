@@ -2,7 +2,7 @@
 # ==============================================================================
 # DESIGN PATTERN: NO-PIPE MULTIPLEXER (SIMPLE VERIFICATION)
 # ORIGINAL CONCEPT & LOGIC : jpfr(jpfrx)
-# ARCHITECTURE & FORMATTING : AI Collaborator
+# COMMENT & PRESENTATION : AI Assistant (Google Gemini)
 # LICENSE: MIT License (c) 2026 jpfrx - Full terms in root LICENSE file
 # ==============================================================================
 use strict;
